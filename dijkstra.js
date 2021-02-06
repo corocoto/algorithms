@@ -1,26 +1,70 @@
-const graph = new Map();
-graph.set('start', {
-  a: 6,
-  b: 2
-});
-graph.set('a', {
-  fin: 1
-});
-graph.set('b', {
-  a: 3,
-  fin: 5
-});
-graph.set('fin', {});
+const graph = new Map([
+  [
+    'start',
+    {
+      a: 6,
+      b: 2
+    }
+  ],
+  [
+    'a',
+    {
+      fin: 1
+    }
+  ],
+  [
+    'b',
+    {
+      a: 3,
+      fin: 5
+    }
+  ],
+  [
+    'fin',
+    {
+      a: 3,
+      fin: 5
+    }
+  ]
+]);
 
+const costs = new Map([
+  ['a', 6],
+  ['b', 2],
+  ['fin', Infinity]
+]);
 
-const costs = new Map();
-costs.set('a', 6);
-costs.set('b', 2);
-costs.set('fin', Infinity);
+const parents = new Map([
+  ['a', 'start'],
+  ['b', 'start'],
+  ['fin', null]
+]);
 
+const processed = [];
 
-const parents = new Map();
-parents.set('a', 'start');
-parents.set('b', 'start');
-parents.set('in', null);
-
+let node = findLowestCostNode(costs);
+while (node) {
+  let cost = costs.get(node);
+  let neighbors = graph.get(node);
+  for (let n in neighbors) {
+    let newCost = cost + neighbors[n];
+    if (costs.get(n) > newCost) {
+      costs.set(n, newCost);
+      parents.set(n, node);
+    }
+  }
+  processed.push(node);
+  node = findLowestCostNode(costs);
+}
+debugger;
+function findLowestCostNode(costs) {
+  let lowestCost = Infinity;
+  let lowestCostNode = null;
+  costs.forEach((val, key) => {
+    if (lowestCost > val && !processed.includes(key)) {
+      lowestCost = val;
+      lowestCostNode = key;
+    }
+  })
+  return lowestCostNode;
+}
