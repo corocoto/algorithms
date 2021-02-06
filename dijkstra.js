@@ -56,7 +56,9 @@ while (node) {
   processed.push(node);
   node = findLowestCostNode(costs);
 }
-debugger;
+
+console.log(processed.join(' => '));
+
 function findLowestCostNode(costs) {
   let lowestCost = Infinity;
   let lowestCostNode = null;
