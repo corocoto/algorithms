@@ -57,7 +57,17 @@ while (node) {
   node = findLowestCostNode(costs);
 }
 
-console.log(processed.join(' => '));
+console.log(getPath(parents, 'fin'));
+
+function getPath(parents, point) {
+  const path = [point];
+  while (point) {
+    const pointVal = parents.get(point);
+    path.unshift(pointVal);
+    point = parents.has(pointVal) ? pointVal : null;
+  }
+  return path.join(' => ')
+}
 
 function findLowestCostNode(costs) {
   let lowestCost = Infinity;
