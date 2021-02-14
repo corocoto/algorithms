@@ -82,10 +82,7 @@ const graph = new Map([
   ],
   [
     'fin',
-    {
-      a: 3,
-      fin: 5
-    }
+    {}
   ]
 ]);
 
