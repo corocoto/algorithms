@@ -1,0 +1,26 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "Algorithms list which were be written on JavaScript language",
+  "private": true,
+  "dependencies": {
+    "prompt": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "xorshift128+": "node ./PRNGs/xorshift128+/xorshift128+.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corocoto/algorithms.git"
+  },
+  "keywords": [
+    "alogrithms"
+  ],
+  "author": "corocoto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/corocoto/algorithms/issues"
+  },
+  "homepage": "https://github.com/corocoto/algorithms#readme"
+}
